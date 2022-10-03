@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #333;
+        }
+
+        .navigation {
+            position: relative;
+            width: 350px;
+            height: 70px;
+        }
+
+        .navigation ul {
+            display: flex;
+        }
+
+        .navigation ul li {
+            position: relative;
+            list-style: none;
+            width: 70px;
+            height: 70px;
+            z-index: 1;
+        }
+
+        .navigation ul li a {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: #fff;
+            text-align: center;
+        }
+
+        .navigation ul li a .icon {
+            position: relative;
+            line-height: 75px;
+            transition: 0.5s;
+            font-size: 30px;
+        }
+
+        .navigation ul li.active a .icon {
+            font-size: 20px;
+            transform: translateY(-6px);
+        }
+
+        .navigation ul li a .text {
+            position: absolute;
+            font-size: 12px;
+            color: #fff;
+            bottom: 20px;
+            font-weight: 400;
+            transition: 0.25s;
+            text-transform: uppercase;
+            transform: scale(0);
+        }
+
+        .navigation ul li:active a .text {
+            /*imp*/
+            transform: scale(1);
+        }
+
+        .indicator {
+            position: absolute;
+            left: 0;
+            width: 70px;
+            height: 70px;
+            background: #f00;
+            border-radius: 10px;
+            transition: 0.5s;
+        }
+        .navigation ul li:nth-active ~ .indicator{
+            background: #f53b57;
+            box-shadow: 0 15px 25px #f53b5799;
+            transform: translateX(calc(70px * 0));
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navigation">
+        <ul>
+            <li class="list">
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="home-outline"></ion-icon>
+                    </span>
+                    <span class="text">Home</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </span>
+                    <span class="text">Profile</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="chatbubble-outline"></ion-icon>
+                    </span>
+                    <span class="text">Message</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="help-circle-outline"></ion-icon>
+                    </span>
+                    <span class="text">Help</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon">
+                        <ion-icon name="settings-outline"></ion-icon>
+                    </span>
+                    <span class="text">Settings</span>
+                </a>
+            </li>
+            <div class="indicator"></div>
+        </ul>
+    </div>
+    <script>
+        let list = document.querySelectorAll('.list');
+        function setActiveClass() {
+            list.forEach((item) =>
+                item.classList.remove('active'));
+            this.classList.add('active');
+        }
+        list.forEach((item) =>
+            item.addEventListener('mouseover', setActiveClass))
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
