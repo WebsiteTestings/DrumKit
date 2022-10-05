@@ -54,14 +54,3 @@ function animation(keypressed) {
     activeKey.classList.remove("pressed");
   }, 0100);
 }
-//Constructor Function
-function BellBoy(name, age, hasWorked, languages) {
-  this.name = name;
-  this.age = age;
-  this.hasWorked = hasWorked;
-  this.languages = languages;
-}
-
-//initialise Object
-var bellboy1 = new BellBoy("Prasad", 17, true, ["Marathi", "Hindi"]);
-console.log(bellboy1);
